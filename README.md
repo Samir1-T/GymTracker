@@ -1,2 +1,2 @@
-# GymTracker
-An app that helps you monitor weight lifting progression.
+# OptometryinOne
+An app for all optometrist
