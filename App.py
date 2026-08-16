@@ -1,45 +1,48 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Gym Tracker",
-    page_icon="💪"
+st.title("Optometry Pathology Guide")
+
+st.write("Search and learn about common eye conditions.")
+
+pathology = st.selectbox(
+    "Choose a pathology:",
+    [
+        "Keratoconus",
+        "Cataract",
+        "Anterior Uveitis",
+        "AMD",
+        "Diabetic Retinopathy"
+    ]
 )
 
-st.title("💪 Gym Tracker")
-st.write("Log your exercise and get a target for next time.")
+if pathology == "Keratoconus":
 
-exercise = st.text_input("Exercise")
+    st.header("Keratoconus")
 
-weight = st.number_input(
-    "Weight (kg)",
-    min_value=0.0,
-    step=2.5
-)
+    st.subheader("Symptoms")
+    st.write("- Blurred vision")
+    st.write("- Distorted vision")
+    st.write("- Frequent prescription changes")
+    st.write("- Glare and halos")
 
-set_1 = st.number_input("Set 1 reps", min_value=0, step=1)
-set_2 = st.number_input("Set 2 reps", min_value=0, step=1)
-set_3 = st.number_input("Set 3 reps", min_value=0, step=1)
+    st.subheader("Clinical Signs")
+    st.write("- Irregular astigmatism")
+    st.write("- Corneal thinning")
+    st.write("- Fleischer ring")
+    st.write("- Vogt striae")
+    st.write("- Munson sign")
 
-if st.button("Save workout"):
-    average_reps = (set_1 + set_2 + set_3) / 3
+elif pathology == "Cataract":
 
-    st.success("Workout logged!")
-    st.subheader("Your session")
-    st.write(f"Exercise: {exercise}")
-    st.write(f"Weight: {weight} kg")
-    st.write(f"Reps: {set_1}, {set_2}, {set_3}")
+    st.header("Cataract")
 
-    st.subheader("Next session")
+    st.subheader("Symptoms")
+    st.write("- Gradual reduction in vision")
+    st.write("- Glare")
+    st.write("- Reduced contrast")
+    st.write("- Difficulty driving at night")
 
-    if set_1 >= 10 and set_2 >= 10 and set_3 >= 10:
-        st.write(
-            f"🔥 Great session. Try increasing the weight above {weight} kg next time."
-        )
-    elif average_reps >= 8:
-        st.write(
-            f"Keep {weight} kg and try to add another rep next session."
-        )
-    else:
-        st.write(
-            f"Stay at {weight} kg until you can perform more reps consistently."
-        )
+    st.subheader("Clinical Signs")
+    st.write("- Lens opacity")
+    st.write("- Reduced red reflex")
+    st.write("- Reduced visual acuity")
