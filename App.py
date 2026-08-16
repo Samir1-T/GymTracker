@@ -1,1 +1,45 @@
-import streamlit as st st.set_page_config( page_title="Gym Tracker", page_icon="💪" ) st.title("💪 Gym Tracker") st.write("Log your exercise and get a target for next time.") exercise = st.text_input("Exercise") weight = st.number_input( "Weight (kg)", min_value=0.0, step=2.5 ) set_1 = st.number_input( "Set 1 reps", min_value=0, step=1 ) set_2 = st.number_input( "Set 2 reps", min_value=0, step=1 ) set_3 = st.number_input( "Set 3 reps", min_value=0, step=1 ) if st.button("Save workout"): average_reps = (set_1 + set_2 + set_3) / 3 st.success("Workout logged!") st.subheader("Your session") st.write(f"Exercise: {exercise}") st.write(f"Weight: {weight} kg") st.write(f"Reps: {set_1}, {set_2}, {set_3}") st.subheader("Next session") if set_1 >= 10 and set_2 >= 10 and set_3 >= 10: st.write( f"🔥 Great session. Try increasing the weight above {weight} kg next time." ) elif average_reps >= 8: st.write( f"Keep {weight} kg and try to add another rep next session." ) else: st.write( f"Stay at {weight} kg until you can perform more reps consistently." )
+import streamlit as st
+
+st.set_page_config(
+    page_title="Gym Tracker",
+    page_icon="💪"
+)
+
+st.title("💪 Gym Tracker")
+st.write("Log your exercise and get a target for next time.")
+
+exercise = st.text_input("Exercise")
+
+weight = st.number_input(
+    "Weight (kg)",
+    min_value=0.0,
+    step=2.5
+)
+
+set_1 = st.number_input("Set 1 reps", min_value=0, step=1)
+set_2 = st.number_input("Set 2 reps", min_value=0, step=1)
+set_3 = st.number_input("Set 3 reps", min_value=0, step=1)
+
+if st.button("Save workout"):
+    average_reps = (set_1 + set_2 + set_3) / 3
+
+    st.success("Workout logged!")
+    st.subheader("Your session")
+    st.write(f"Exercise: {exercise}")
+    st.write(f"Weight: {weight} kg")
+    st.write(f"Reps: {set_1}, {set_2}, {set_3}")
+
+    st.subheader("Next session")
+
+    if set_1 >= 10 and set_2 >= 10 and set_3 >= 10:
+        st.write(
+            f"🔥 Great session. Try increasing the weight above {weight} kg next time."
+        )
+    elif average_reps >= 8:
+        st.write(
+            f"Keep {weight} kg and try to add another rep next session."
+        )
+    else:
+        st.write(
+            f"Stay at {weight} kg until you can perform more reps consistently."
+        )
